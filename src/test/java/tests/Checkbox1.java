@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Checkbox1 {
-    WebDriver driver= new FirefoxDriver();
+    WebDriver driver = new FirefoxDriver();
+
     @Before
     public void setup() throws InterruptedException {
 
@@ -25,15 +27,29 @@ public class Checkbox1 {
 
     public void checkboxtest() throws InterruptedException {
 
-        WebElement signIn =driver.findElement(By.partialLinkText("Sign In"));
+        WebElement signIn = driver.findElement(By.partialLinkText("Sign In"));
         signIn.click();
         Thread.sleep(2000);
 
 
-
-        WebElement checkbox =driver.findElement(By.xpath("//input[@type='checkbox']"));
+        WebElement checkbox = driver.findElement(By.xpath("//input[@type='checkbox']"));
         checkbox.click();
         Thread.sleep(2000);
 
         Assert.assertTrue(checkbox.isSelected());
+
+
+
+
+    }
+
+    @After
+
+    public void teardown(){
+
+        driver.close();
+    }
+
 }
+
+
